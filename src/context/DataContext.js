@@ -68,10 +68,23 @@ const [showResult, setShowResult] = useState(false);
     setShowStart(false);
     setShowQuiz(false);
   }
-
+  // Start Over
+  const startOver = () => {
+    setShowStart(false);
+    setShowResult(false);
+    setShowQuiz(true);
+    setCorrectAnswer('');
+    setSelectedAnswer('');
+    setQuestionIndex(0);
+    setMarks(0);
+    const wrongBtn = document.querySelector('button.bg-danger');
+    wrongBtn?.classList.remove('bg-danger');
+    const rightBtn = document.querySelector('button.bg-success');
+    rightBtn?.classList.remove('bg-success');
+  }
 
 return (
-    <DataContext.Provider value={{startQuiz,showStart,quizs,question,showQuiz ,checkAnswer,selectedAnswer,correctAnswer,nextQuestion,questionIndex,selectedAnswer,showTheResult}}>
+    <DataContext.Provider value={{startQuiz,showStart,quizs,question,showQuiz ,checkAnswer,correctAnswer,nextQuestion,questionIndex,selectedAnswer,showTheResult ,startOver,marks,showResult}}>
         {children}
     </DataContext.Provider>
 )
